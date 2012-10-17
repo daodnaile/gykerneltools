@@ -1,0 +1,11 @@
+ui_print("- Extracting files");
+package_extract_dir("system", "/cache/kernelflash");
+set_perm(0, 0, 0755, "/cache/kernelflash/bmlwriter.bin");
+
+ui_print("- Flashing kernel");
+run_program("/cache/kernelflash/bmlwriter.bin", "/cache/kernelflash/boot.img", "/dev/block/bml7");
+
+ui_print("- Cleaning up");
+delete_recursive("/cache/kernelflash");
+
+ui_print("- Done !");
