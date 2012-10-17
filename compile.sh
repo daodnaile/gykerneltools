@@ -8,15 +8,15 @@ export OUTPUT=$($WORKING_DIR)"/output"
 export UTIL=$($WORKING_DIR)"/utilities"
 export TOOLCHAIN=$($WORKING_DIR)"/arm-toolchain/bin/arm-none-eabi-"
 
-#./clean.sh
+./clean.sh
 cd $SOURCE
 
-#if [ "$1" == "-clean" ];
-#then
-#make clean
-#fi
-#make bcm21553_totoro_05_defconfig
-#make CONFIG_DEBUG_SECTION_MISMATCH=y $CPU_CORES EXTRA_AFLAGS='-mfpu=neon -ftree-vectorize -mfloat-abi=softfp'
+if [ "$1" == "-clean" ];
+then
+make clean
+fi
+make bcm21553_totoro_05_defconfig
+make CONFIG_DEBUG_SECTION_MISMATCH=y $CPU_CORES EXTRA_AFLAGS='-mfpu=neon -ftree-vectorize -mfloat-abi=softfp'
 echo "compile done"
 sleep 1s &
 wait
